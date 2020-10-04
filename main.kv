@@ -1,0 +1,81 @@
+#:import MapView kivy_garden.mapview.MapView
+#:include home.kv
+#:include login.kv
+<MainBox@BoxLayout>:
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<MainWindow>:
+    ScreenManager:
+        id: root_manager
+        Screen:
+            name: 'home'
+            MainBox:
+                HomePage:
+        Screen:
+            name: "login"
+            LoginWin:
+        Screen:
+            name: 'maps'
+            BoxLayout:
+                orientation: 'vertical'
+                MDToolbar:
+                    title: 'Your Location'
+                    left_action_items: [['home', lambda x: root.home()]]
+                    md_bg_color: 1,0,0,1
+                    size_hint_y: .1
+                BoxLayout:
+                    size_hint_y: .9
+                    MapView:
+                        lat: 51.5310
+                        lon: 25.2854
+                        zoom: 5
+                        double_tap_zoom: True
+                        on_lat:
+                            self.mark = self.lat
+                        MapMarkerPopup:
+                            id: mark
+                            lat: 51.5310
+                            lon: 25.2854
+                            Label:
+                                text: "Umm salal Mohammed"
+                                color: 1,0,0,1
+    MDNavigationDrawer:
+        id: nav_drawer
+        BoxLayout:
+            orientation: "vertical"
+            BoxLayout:
+                size_hint_y: .1
+                MDIconButton:
+                    icon: 'account-circle-outline'
+                    user_font_size: "45sp"
+                    size_hint_x: .2
+                    on_release: nav_drawer.set_state('close')
+                BoxLayout:
+                    size_hint_x: .6
+                    orientation: 'vertical'
+                    padding: 0,20,0,0
+                    Label:
+                        text: "HI GUEST"
+                        color: 0,0,0,1
+                    OneLineIconListItem:
+                        text: "[size=10]Qatar[/size]"
+                        divider: None
+                        IconLeftWidget:
+                            icon: "assets/qt1.png"
+                            user_font_size: "8sp"
+                            pos_hint: {'center_y': .4}
+                MDIconButton:
+                    icon: "cog-outline"
+                    size_hint_x: .15
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+            BoxLayout:
+                size_hint_y: .5
+                orientation: 'vertical'
+                id: nav_items
+            Widget:
+                size_hint_y: .4

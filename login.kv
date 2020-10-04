@@ -1,0 +1,120 @@
+#:import utils kivy.utils
+<LoginWin>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        canvas:
+            Color:
+                rgb: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        BoxLayout:
+            size_hint_y: .1
+            MDIconButton:
+                icon: 'arrow-left'
+                pos_hint: {'center_y': .5}
+                on_release: root.parent.parent.parent.ids.root_manager.current = 'home'
+            Label:
+                text: "Login"
+                color: 0,0,0,1
+        Widget:
+            size_hint_y: .05
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .35
+#            spacing: 10
+            Label:
+            Label:
+                color: utils.get_color_from_hex("#ff6600")
+                markup: True
+                text: '[b]talabat[/b]'
+                font_size: 50
+                pos_hint: {'center_x': .5, 'center_y': .5}
+            Label:
+                text: 'Your everyday, right away'
+                color: 0,0,0,1
+                pos_hint: {'center_x': .5, 'center_y': 4}
+            Label:
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: .2
+            Label:
+                text: '[b]Login or create an account[/b]'
+                color: 0,0,0,1
+                markup: True
+                font_size: 25
+                pos_hint: {'center_x': .5}
+            Label:
+                text: 'Login or create an account to receive rewards and save'
+                pos_hint: {'center_x': .5}
+                color: 0,0,0,1
+            Label:
+                text: '    your details for faster checkout experience'
+                pos_hint: {'center_x': .5}
+                color: 0,0,0,1
+        Widget:
+            size_hint_y: .05
+        BoxLayout:
+            size_hint_y: .25
+            orientation: 'vertical'
+            spacing: 10
+            BorderBox:
+                padding: 20, 0, 0, 0
+                MDIconButton:
+                    icon: "assets/gn.png"
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    user_font_size: dp(5)
+                Widget:
+                MDTextButton:
+                    text: "continue with Google"
+                    pos_hint: {'center_y': .5}
+                    custom_color: 0,0,0,1
+                Widget:
+            BorderBox:
+                padding: 20, 0, 0, 0
+                MDIcon:
+                    icon: "facebook"
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    theme_text_color: "Custom"
+                    text_color: 0,0,1,1
+                MDTextButton:
+                    text: "continue with Facebook"
+                    pos_hint: {'center_y': .5}
+                    custom_color: 0,0,0,1
+                Widget:
+            BorderBox:
+                padding: 20, 0, 0, 0
+                MDIcon:
+                    icon: "email"
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    theme_text_color: "Custom"
+                    text_color: 255/255, 102/255, 0, 1
+                MDTextButton:
+                    text: "continue with Email"
+                    pos_hint: {'center_y': .5}
+                    custom_color: 0,0,0,1
+                Widget:
+        Widget:
+            size_hint_y: .1
+
+<BorderBox@BoxLayout>:
+    border_radius: 10
+    canvas.before:
+        Color:
+            rgba: 0,0,0,1
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], self.border_radius)
+            width: 0.6
+
+
+
+
+
+
+
+
+
+
+
+

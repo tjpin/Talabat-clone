@@ -1,0 +1,15 @@
+#:import MapView kivy_garden.mapview.MapView
+MapView:
+    lat: 51.5310
+    lon: 25.2854
+    zoom: 5
+    double_tap_zoom: True
+    on_lat:
+        self.mark = self.lat
+    MapMarkerPopup:
+        id: mark
+        lat: 51.5310
+        lon: 25.2854
+        Label:
+            text: "Umm salal Mohammed"
+            color: 1,0,0,1

@@ -1,0 +1,283 @@
+#:import utils kivy.utils
+
+<MainBox@BoxLayout>:
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<MyCard@MDCard>:
+    radius: 10, 10
+    orientation: 'vertical'
+    elevation: 0
+    padding: 10
+
+<HomePage>:
+    id: main_container
+    orientation: 'vertical'
+    spacing: 20
+    MainBox:
+        id: top_bar
+        size_hint_y: .1
+        MDIconButton:
+            icon: "menu"
+            on_release: root.parent.parent.parent.parent.ids.nav_drawer.set_state('open')
+        MainBox:
+            orientation: 'vertical'
+            Label:
+                text: "Delivering to"
+                color: 0,0,0,1
+            Label:
+                text: "Umm Salal Mohammed"
+                color: 255/255, 51/255, 0, 1
+        MDIconButton:
+            icon: "magnify"
+            on_release: root.parent.parent.parent.parent.ids.root_manager.current = 'maps'
+    BoxLayout:
+        id: body_container
+        size_hint_y: .9
+        orientation: 'vertical'
+        ScrollView:
+            MainBox:
+                orientation: 'vertical'
+                spacing: 20
+                padding: 10
+                size_hint_y: None
+                height: self.minimum_height
+                MDCard:
+                    id: login_reminder
+                    size_hint: 1, None
+                    height: 120
+                    orientation: 'vertical'
+                    radius: 10, 10
+                    TwoLineIconListItem:
+                        text: 'Login or create an account to'
+                        secondary_text: 'receive rewards and offers'
+                        bg_color: 255/255, 51/255, 0, .03
+                        divider: None
+                        size_hint_y: .6
+                        IconLeftWidget:
+                            icon: 'account-circle'
+                            theme_text_color: 'Custom'
+                            text_color: 255/255, 51/255, 0, 1
+                            pos_hint: {'center_y': .5}
+                            user_font_size: '50sp'
+                            padding: 0, 0, 20, 0
+                    MDFlatButton:
+                        text: 'Login'
+                        text_color: 255/255, 51/255, 0, 1
+                        pos_hint: {'center_x': .5}
+                        size_hint_y: .4
+                        on_release: root.parent.parent.parent.parent.ids.root_manager.current = 'login'
+                MDLabel:
+                    text: "[b]What would you like to order?[/b]"
+                    size_hint_y: None
+                    markup: True
+                    height: 30
+                MainBox:
+                    id: categories
+                    size_hint: 1, None
+                    height: 120
+                    Carousel:
+                        MainBox:
+                            spacing: 10
+                            MyCard:
+                                md_bg_color: 255/255, 51/255, 0, 1
+                                Image:
+                                    source: 'assets/veges.png'
+                                    size_hint_y: .9
+                                Label:
+                                    text: "Food"
+                                    size_hint_y: .1
+                                    pos_hint: {'center_x': .2}
+                            MyCard:
+                                md_bg_color: 255/255, 204/255, 0, 1
+                                Image:
+                                    source: 'assets/flowers.png'
+                                    size_hint_y: .9
+                                Label:
+                                    text: "Flowers"
+                                    size_hint_y: .1
+                                    pos_hint: {'center_x': .2}
+                            MyCard:
+                                md_bg_color: 0, 0, 153/255, 1
+                                Image:
+                                    source: 'assets/veges.png'
+                                    size_hint_y: .9
+                                Label:
+                                    text: "Grocery"
+                                    size_hint_y: .1
+                                    pos_hint: {'center_x': .2}
+                            MyCard:
+                                md_bg_color: 0, 240/255, 0, 1
+                                Image:
+                                    source: 'assets/pills.png'
+                                    size_hint_y: .9
+                                Label:
+                                    text: "Pharmacy"
+                                    size_hint_y: .1
+                                    pos_hint: {'center_x': .5}
+
+                MainBox:
+                    id: featured1
+                    size_hint: 1, None
+                    height: 150
+                    spacing: 10
+                    Carousel:
+                        BoxLayout:
+                            MDCard:
+                                radius: 10,10
+                                Image:
+                                    source: 'assets/chicken.png'
+                                Image:
+                                    source: 'assets/fries.png'
+                                Image:
+                                    source: 'assets/sandwitch.png'
+                        BoxLayout:
+                            MDCard:
+                                radius: 10,10
+                                elevation: 0
+                                Image:
+                                    source: 'assets/greens.png'
+                                Image:
+                                    source: 'assets/fruits.png'
+                                Image:
+                                    source: 'assets/veges.png'
+                BoxLayout:
+                    size_hint_y: None
+                    height: 30
+                    BoxLayout:
+                        size_hint_x: .4
+                        MDLabel:
+                            text: "[b]Groceries and more[/b]"
+                            markup: True
+                        MDIcon:
+                            icon: 'cart'
+                            theme_text_color: "Custom"
+                            text_color: 255/255, 51/255, 0, 1
+                    Widget:
+                        size_hint_x: .6
+                MainBox:
+                    id: groceries
+                    size_hint: 1, None
+                    height: 140
+                    spacing: 10
+                    MDCard:
+                        md_bg_color: utils.get_color_from_hex("#ffdab3")
+                        background_down: ''
+                        background_normal: ''
+                        elevation: 0
+                        radius: 10, 10
+                        size_hint_x: .7
+                        Image:
+                            source: 'assets/veges.png'
+                            size_hint_x: .5
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint_x: .5
+                            OneLineIconListItem:
+                                text: '30 Min Delivery'
+                                divider: None
+                                IconLeftWidget:
+                                    icon: 'arrow-top-right'
+                                    theme_text_color: 'Custom'
+                                    text_color: 0, 0, 1, 1
+                            OneLineIconListItem:
+                                text: "100's of Discount"
+                                divider: None
+                                IconLeftWidget:
+                                    icon: 'wave'
+                                    theme_text_color: 'Custom'
+                                    text_color: 0, 0, 1, 1
+                            OneLineIconListItem:
+                                text: '3500+ Products'
+                                divider: None
+                                IconLeftWidget:
+                                    icon: 'ubisoft'
+                                    theme_text_color: 'Custom'
+                                    text_color: 0, 0, 1, 1
+                    MDCard:
+                        size_hint_x: .3
+                        radius: 10, 0, 0, 10
+                        md_bg_color: utils.get_color_from_hex("#ffdab3")
+                        elevation: 0
+                        FitImage:
+                            source: 'assets/mono.jpg'
+                            radius: 10, 0, 0, 10
+                MDLabel:
+                    text: "[b]Electronics[/b]"
+                    markup: True
+                    size_hint_y: None
+                    height: 30
+                MainBox:
+                    id: electronics
+                    size_hint: 1, None
+                    height: 140
+                    spacing: 10
+                    MDCard:
+                        md_bg_color: utils.get_color_from_hex("#ffdab3")
+                        background_down: ''
+                        background_normal: ''
+                        elevation: 0
+                        radius: 10, 10
+                        size_hint_x: .7
+                        FitImage:
+                            source: 'assets/electo.jpg'
+                            radius: 10, 10
+                    MDCard:
+                        size_hint_x: .3
+                        radius: 10, 0, 0, 10
+                        md_bg_color: utils.get_color_from_hex("#ffdab3")
+                        elevation: 0
+                        FitImage:
+                            source: 'assets/electo2.png'
+                            radius: 10, 0, 0, 10
+                MDLabel:
+                    text: "[b]Pharmacy[/b]"
+                    markup: True
+                    size_hint_y: None
+                    height: 30
+                MainBox:
+                    id: medics
+                    size_hint: 1, None
+                    height: 140
+                    spacing: 10
+                    MDCard:
+                        md_bg_color: utils.get_color_from_hex("#0000ff")
+                        background_down: ''
+                        background_normal: ''
+                        elevation: 0
+                        radius: 10, 10
+                        size_hint_x: .7
+                        FitImage:
+                            source: 'assets/med2.jpg'
+                            radius: 10, 10
+                    MDCard:
+                        size_hint_x: .3
+                        radius: 10, 0, 0, 10
+                        md_bg_color: utils.get_color_from_hex("#ffdab3")
+                        elevation: 0
+                        FitImage:
+                            source: 'assets/med.jpg'
+                            radius: 10, 0, 0, 10
+                BButton:
+                    size_hint: 1, None
+                    height: 50
+                    spacing: 10
+                    Widget:
+                    MDTextButton:
+                        text: "View all restaurants"
+                        custom_color: 1,1,1,1
+                        pos_hint: {'center_y': .5}
+                    Widget:
+
+<BButton@BoxLayout>:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#ff6600")
+        RoundedRectangle:
+            radius: 10, 10
+            pos: self.pos
+            size: self.size
